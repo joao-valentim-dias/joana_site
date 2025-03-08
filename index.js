@@ -6,6 +6,6 @@ const app = express();
 // Servir arquivos estáticos da pasta 'public'
 app.use(express.static(path.join(__dirname, "public")));
 
-app.listen(7777, () => {
-    console.log('Server started at http://localhost:7777');
+app.listen(80, () => {
+    console.log('Server started at port 80');
 });
