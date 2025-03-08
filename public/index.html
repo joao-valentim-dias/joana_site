@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efeito Carta Escrita</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5dc;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .carta {
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 500px;
+            min-height: 200px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .mensagem {
+            white-space: pre-wrap;
+            font-size: 18px;
+        }
+
+        .cursor {
+            border-right: 2px solid black;
+            animation: piscar 0.7s infinite;
+        }
+
+        @keyframes piscar {
+            0%, 100% { border-color: transparent; }
+            50% { border-color: black; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="carta">
+    <div id="mensagem" class="mensagem"></div>
+</div>
+
+<script>
+    const textoCarta = "Joana,\n\na cada dia admiro mais a mulher incrível que você é e sinto ainda mais felicidade em saber que vamos compartilhar a vida juntos.\n\nFeliz Dia das Mulheres, meu amor!\n\nAmo você demais, minha boa ❤️";
+    const velocidade = 100; // velocidade em ms
+
+    let i = 0;
+    const elementoMensagem = document.getElementById('mensagem');
+
+    function escreverCarta() {
+        if (i < textoCarta.length) {
+            elementoMensagem.innerHTML += textoCarta.charAt(i);
+            elementoMensagem.innerHTML += '<span class="cursor"></span>';
+            i++;
+            setTimeout(() => {
+                elementoMensagem.querySelector('.cursor').remove();
+                escreverCarta();
+            }, velocidade);
+        }
+    }
+
+    escreverCarta();
+</script>
+
+</body>
+</html>
